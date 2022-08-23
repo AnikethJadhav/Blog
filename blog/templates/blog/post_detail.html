@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} {{ post.title }} {% endblock %}
+
+{% block css %} 
+  <link rel="stylesheet" href="{% static "blog/post_detail.css" %}">
+{% endblock %}
+
+{% block body %}
+ <header>
+    <div class="container">
+      <nav>
+        <a href="{% url "index" %}">Aniketh's Blog</a>
+        <a class="read-later-nav" href="{% url "read-later" %}">Read Later</a>
+        <a href="{% url "posts" %}">All Posts</a>
+      </nav>
+      
+      <div class="showcase">
+        <div class="box-1">
+          <h1>{{ post.title|title }}</h1>
+          {% for tag in tags %}
+            <span>{{tag}}</span>
+          {% endfor %} 
+
+          <form method="POST">
+            {% csrf_token %}
+            {% if not read_later %}
+              <input type="hidden" name="add_id" value={{ post.id }}>
+              <button  class="read-later">read later</button>
+            {% else %}  
+              <input type="hidden" name="remove_id" value={{ post.id }}>
+              <button  class="read-later">remove from read later</button>
+            {% endif %}  
+          </form> 
+
+        </div>
+        <div class="box-2">
+          <img src="{{ post.image.url }}" width="200" height="200" alt="no-image">
+          <p>
+            <em>Author - <strong><a target="_blank" href="mailto:{{ post.author.email }}">{{ post.author }}</a></strong></em>
+            <br>
+            Last Update on <strong>{{ post.date }}</strong>
+          </p>
+        </div>  
+      </div>
+    </div>
+  </header>
+
+  <div class="content">
+    <p>{{ post.content|linebreaks }}</p>
+  </div>
+
+  <section class="comments-display">
+    {% if comments %}
+    <h2>Reader's Comment</h2><hr>
+      <ul>
+        {% for comment in comments %}
+          <li class="comment-group">
+            <h3>{{ comment.user_name|title}}</h3>   
+            <span>{{ comment.user_email }}</span>
+            <p>{{ comment.text|linebreaks }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <h3 class="no-comments">No Comments added Yet</h3>
+    {% endif %}
+  </section>
+
+  <section class="comment-form">
+    <h2>Leave a Comment Below</h2>
+    <form action="/postcomment" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="comment" value={{ post.slug }}>
+      {% for field in form %}
+        <div class="form-group">
+          {{ field.label_tag }}
+          {{ field }}
+          {{ field.errors }}
+        </div>
+      {% endfor %}
+      <button>submit</button>
+    </form>  
+  </section>
+
+  <footer>
+    <p style="text-align:center;">All Copy &copy; rights Reserved by Aniketh Jadhav</p>
+  </footer>
+{% endblock %}

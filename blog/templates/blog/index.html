@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}My Blog | Welcome{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static "blog/index.css" %}">
+{% endblock %}
+
+{% block body %}
+  <header>
+  <div class="container">
+    <nav>
+      <a href="{% url "index" %}">Aniketh's Blog</a>
+      <a class="read-later" href="{% url "read-later" %}">Read Later</a>
+      <a href="{% url "posts" %}">All Posts</a>
+    </nav>
+    <div class="welcome-title">
+      <img src="{% static "blog/images/me.jfif" %}" width="180px" height="180px" alt="">
+      <h1>Aniketh's<br>Blog</h1>
+    </div>  
+    <em><p class="self-description">Hi I am Aniketh, Welcome to my Blog.</p></em>
+  </div>  
+  </header>
+
+  <div class="container">
+    <div class="latest-posts-display">
+      {% for post in posts %}
+        <a href="{{ post.get_absolute_url }}">
+          <img src="{{ post.image.url }}" width="100px" height="100px" alt="post-img">
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.excerpt }}</p>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <footer>
+    <p>All Copy &copy; rights Reserved by Aniketh Jadhav</p>
+  </footer>
+{% endblock %}

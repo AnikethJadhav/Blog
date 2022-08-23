@@ -1,0 +1,42 @@
+h1 {
+  color: #a50b0b;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+h2 {
+  width: 70%;
+  margin: 20px auto;
+}
+
+h2 a:hover {
+  color: darkblue;
+}
+
+ul {
+  list-style: none;
+  width: 70%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+li {
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+li a {
+  display: block;
+  padding: 15px;
+  font-size: 2rem;
+}
+
+li a:hover {
+  background: darkblue;
+}

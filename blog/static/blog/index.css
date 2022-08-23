@@ -1,0 +1,147 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color:white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+header {
+  height: 80vh;
+  background-color: #8109f1;
+  border-bottom: thick groove darkblue;
+}
+
+.container {
+  width:80%;
+  color:white;
+  margin: auto;
+}
+
+header p {
+  margin: 15px 0;
+  color: white;
+}
+
+header nav {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav a {
+  text-decoration: none;
+  color: white; 
+  font-size: 1.3rem;
+  font-weight: bolder;
+}
+
+a.read-later {
+  display: inline-block;
+  margin-left: 650px;
+}
+
+header nav a:hover {
+  color: darkblue;
+}
+
+.welcome-title {
+  display: flex;
+  padding: 8px 20px 0 0;
+  margin-top: 40px;
+}
+
+.welcome-title img {
+  /* display: inline-block;
+  margin: auto; */
+  background: darkblue;
+  padding: 4px;
+  /* border: 2px #ccc solid; */
+  border-radius: 10px;
+  transform: rotate(-4deg);
+  transition: all 1.2s ease-in-out;
+}
+
+.welcome-title img:hover {
+  border-radius: 50%;
+  transform: scale(1.4);
+}
+
+
+.welcome-title h1 {
+  margin: 0 0 0 30px;
+  font-size: 3rem;
+}
+
+p.self-description { 
+  margin: 30px 0;
+}
+
+.latest-posts-display {
+  width: 80%;
+  margin: auto;
+  min-height: 100px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 15px;
+  position: relative;
+  bottom: 115px;
+  text-align:center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 32px 17px;
+}
+
+.latest-posts-display a {
+  color: black;
+  text-decoration: none;
+  /* border: 1px #ccc solid; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align:center;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 0 10px;
+  /* width: 200px; */
+  height: 300px;
+  width: 32%;
+  transition: all 0.3s ease-in-out;
+}
+
+.latest-posts-display a:hover {
+  background: darkblue;
+  color: white;
+  transform: scale(1.1);
+}
+
+.latest-posts-display a img {
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.latest-posts-display a p,
+.latest-posts-display a h3 {
+  margin: 5px 0;
+}
+
+/* .latest-posts-display a p {
+  text-align: justify;
+  padding: 0 5px;
+} */
+
+
+
+
+footer {
+  text-align: center;
+  color: black;
+}

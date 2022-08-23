@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}All Posts{% endblock %} 
+
+{% block css %}
+  <link rel="stylesheet" href="{% static "blog/posts.css" %}">
+{% endblock %}
+
+{% block body %}
+
+<header>
+  <div class="container">
+    <nav>
+      <a href="{% url "index" %}">Aniketh's Blog</a>
+      <a class="read-later" href="{% url "read-later" %}">Read Later</a>
+    </nav>
+  </div>  
+</header>
+
+<h1 class="main-heading">My Blog Collection</h1>
+
+<div class="all-posts">
+  {% for post in posts %}
+    <a href="{{ post.get_absolute_url }}">
+      <img src="{{ post.image.url }}" width="100px" height="100px" alt="post-img">
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.excerpt }}</p>
+    </a>
+  {% endfor %}
+</div>
+<footer>
+  <p style="text-align:center;">All Copy &copy; rights Reserved by Aniketh Jadhav</p>
+</footer>
+{% endblock %}
